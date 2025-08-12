@@ -2,23 +2,23 @@
 using namespace std;
 
 int a[50];
-int n = 50;
-int size = 0;
+int max_size = 50;
+int n = 0;
 void createArr(){
     cout<<"Enter size of array :";
-    cin>>size;
-    if(size > n){
+    cin>>n;
+    if(n > max_size){
         cout<<"Invalid Input"<<endl;
         return;
     }
     cout<<"Enter elements :";
-    for(int i = 0; i < size; i++){
+    for(int i = 0; i < n; i++){
         cin>>a[i];
     }
 }
 
 void display(){
-    for(int i = 0; i < size; i++){
+    for(int i = 0; i < n; i++){
         cout<<a[i]<<" ";
     }
     cout<<endl;
@@ -28,21 +28,21 @@ void insert(){
     int val, pos;
     cout<<"Enter the element to be inserted and its position :";
     cin>>val>>pos;
-    if(pos < 1 || pos > size + 1){
+    if(pos < 1 || pos > n + 1){
         cout<<"Invalid Operation"<<endl;
         return;
     }
-    if(size + 1 > n){
+    if(n + 1 > max_size){
         cout<<"Array is already full"<<endl;
         return;
     }
 
-    for(int i = size - 1; i >= pos - 1; i--){
+    for(int i = n - 1; i >= pos - 1; i--){
         a[i + 1] = a[i];
     }
 
     a[pos - 1] = val;
-    size++;
+    n++;
 
 }
 
@@ -50,20 +50,20 @@ void deleteval(){
     int pos;
     cout<<"Enter the position of the element to be deleted :";
     cin>>pos;
-    if(pos < 1 || pos > size){
+    if(pos < 1 || pos > n){
         cout<<"Invalid Operation"<<endl;
         return;
     }
-    if(size == 0){
+    if(n == 0){
         cout<<"Array is already empty"<<endl;
         return;
     }
 
-    for(int i = pos - 1; i < size - 1; i++){
+    for(int i = pos - 1; i < n - 1; i++){
         a[i] = a[i + 1];
     }
 
-    size--;
+    n--;
 }
 
 int linearSearch(){
@@ -71,7 +71,7 @@ int linearSearch(){
     cout<<"Enter value to be searched :";
     cin>>val;
 
-    for(int i = 0; i < size; i++){
+    for(int i = 0; i < n; i++){
         if(a[i] == val){
             return i;
         }
