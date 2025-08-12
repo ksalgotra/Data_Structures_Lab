@@ -2,17 +2,17 @@
 using namespace std;
 
 int arr[50];
-int n = 50;
-int size = 0;
+int max_size = 50;
+int n = 0;
 void createArr(){
     cout<<"Enter size of array :";
-    cin>>size;
-    if(size > n){
+    cin>>n;
+    if(n > max_size){
         cout<<"Invalid Input"<<endl;
         return;
     }
     cout<<"Enter sorted array :";
-    for(int i = 0; i < size; i++){
+    for(int i = 0; i < n; i++){
         cin>>arr[i];
     }
 }
@@ -22,7 +22,7 @@ int BinarySearch(){
     cout<<"Enter target value :";
     cin>>val;
 
-    int st = 0, end = size - 1;
+    int st = 0, end = n - 1;
     
     while(st <= end){
         int mid = (st + end) / 2;
