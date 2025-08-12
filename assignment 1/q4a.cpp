@@ -2,23 +2,23 @@
 using namespace std;
 
 int arr[50];
-int n = 50;
-int size = 0;
+int max_size = 50;
+int n = 0;
 void createArr(){
     cout<<"Enter size of array :";
-    cin>>size;
-    if(size > n){
+    cin>>n;
+    if(n > max_size){
         cout<<"Invalid Input"<<endl;
         return;
     }
     cout<<"Enter elements :";
-    for(int i = 0; i < size; i++){
+    for(int i = 0; i < n; i++){
         cin>>arr[i];
     }
 }
 
 void display(){
-    for(int i = 0; i < size; i++){
+    for(int i = 0; i < n; i++){
         cout<<arr[i]<<" ";
     }
     cout<<endl;
@@ -26,7 +26,7 @@ void display(){
 
 int main(){
     createArr();
-    int i = 0, j = size - 1;
+    int i = 0, j = n - 1;
     while(i < j){
         int temp = arr[i];
         arr[i] = arr[j];
