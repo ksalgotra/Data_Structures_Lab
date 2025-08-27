@@ -1,26 +1,30 @@
-# include<iostream>
+#include <iostream>
+#include <vector>
+#include <unordered_map>
 using namespace std;
 
 class Solution {
-  public:
-    /* Returns count of pairs with difference k  */
+public:
     int countPairs(vector<int>& arr, int k) {
-        unordered_map <int, int> m;
-        //  map to store frequency of ele seen
-        // abs(arr[j] - arr[i]) = k;
-        // case 1 : arr[j] = k + arr[i];
-        // case 2 : arr[j] = -k + arr[i];
+        unordered_map<int,int> m;
         int count = 0;
-        for(int i = arr.size() - 1; i >= 0; i--){
-            if(m.find(k + arr[i]) != m.end()){
-                 count+= m[k + arr[i]];
+        for (int i = arr.size() - 1; i >= 0; i--) {
+            if (m.find(k + arr[i]) != m.end()) {
+                count += m[k + arr[i]];
             }
-            if(m.find(-k + arr[i]) != m.end()){
+            if (k != 0 && m.find(-k + arr[i]) != m.end()) {
                 count += m[-k + arr[i]];
             }
             m[arr[i]]++;
         }
-        
         return count;
     }
 };
+
+int main() {
+    Solution s;
+    vector<int> arr = {1, 5, 3, 4, 2};// sample testcase
+    int k = 2;
+    cout << s.countPairs(arr, k) << endl;
+    return 0;
+}
